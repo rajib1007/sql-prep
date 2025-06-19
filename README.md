@@ -1,7 +1,7 @@
 # sql-prep
 
 
-### 1. Select date and temp, which is having more temparature than the previous date.\
+### 1. Select date and temp, which is having more temparature than the previous date.
 temp_i | date     | temp
 -------|----------|--------
 1      | 1-6-2025 | 15
@@ -58,6 +58,17 @@ com3   | bounced
 com2   | sent
 com2   | sent
 com1   | bounced
+
+
+SELECT \
+    code,\
+    COUNT(CASE WHEN event = 'sent' THEN 1 END) AS sent,\
+    COUNT(CASE WHEN event = 'open' THEN 1 END) AS open,\
+    COUNT(CASE WHEN event = 'bounced' THEN 1 END) AS bounced\
+FROM your_table_name\
+GROUP BY code\
+ORDER BY code;
+
 
 output 
 -----------------------------
