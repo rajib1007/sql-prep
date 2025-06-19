@@ -2,11 +2,12 @@
 
 
 ### 1. Select date and temp, which is having more temparature than the previous date.\
-temp_id, date, temp\
-1,1-6-2025,15\
-2,2-6-2025,20\
-3,3-6-2025,12\
-4,4-6-2025,25
+temp_i | date     | temp
+-------|----------|--------
+1      | 1-6-2025 | 15
+2      | 2-6-2025 | 20
+3      | 3-6-2025 | 12
+4      | 4-6-2025 | 25
 
 SELECT 
     temp_id,
@@ -43,3 +44,25 @@ or in Snowflake (no generate_series):
 
 SELECT ROW_NUMBER() OVER () AS num\
 FROM TABLE(GENERATOR(ROWCOUNT => 10));
+
+
+### 3. Write sql to get the desired output - 
+
+code   | event 
+-------|------
+com1   | sent  
+com2   | open
+com3   | sent
+com1   | bounced
+com3   | bounced
+com2   | sent
+com2   | sent
+com1   | bounced
+
+output 
+-----------------------------
+code   | sent | open | bounced
+-------|------|------|--------
+com1   | 1    | 0    | 2
+com2   | 2    | 1    | 0
+com3   | 1    | 0    | 1
