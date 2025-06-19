@@ -23,7 +23,7 @@ FROM (\
 WHERE temp > prev_temp;
 
 
-### Generate 1 to 10 sequence 
+### 2. Generate 1 to 10 sequence 
 
 
 ✅ Standard SQL (Using Recursive CTE):
